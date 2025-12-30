@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strength & Hope | Cancer Support</title>
+
+    <style>
+        :root {
+            --primary-pink: #d81b60;
+            --secondary-blue: #1976d2;
+            --bg-light: #f8f9fa;
+            --soft-blue: #e3f2fd;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --accent-yellow: #ffd54f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* ================= NAVBAR ================= */
+        nav {
+            background: var(--white);
+            padding: 1rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--primary-pink);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-left: 25px;
+            padding: 8px 14px;
+            border-radius: 25px;
+            position: relative;
+            transition: all 0.35s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-pink);
+            transition: width 0.35s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-pink), #ec407a);
+            box-shadow: 0 8px 20px rgba(216, 27, 96, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:hover::after {
+            width: 60%;
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            height: 60vh;
+            background:
+                linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1579208575657-c595a05383b7?auto=format&fit=crop&q=80&w=1470')
+                center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 720px;
+        }
+
+        /* ================= QUOTES ================= */
+        .quote-section {
+            background: var(--soft-blue);
+            padding: 3rem 10%;
+            text-align: center;
+        }
+
+        .quote-section p {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* ================= WELLNESS TIP ================= */
+        .tip-container {
+            padding: 4rem 10%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fff9c4 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 720px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(216, 27, 96, 0.1);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        /* ✅ Hover Effect Applied */
+        .tip-card:hover {
+            transform: scale(1.04);
+            box-shadow: 0 18px 45px rgba(216, 27, 96, 0.25);
+        }
+
+        #tip-display {
+            font-size: 1.5rem;
+            font-weight: 600;
+            min-height: 80px;
+        }
+
+        .refresh-tip-btn {
+            margin-top: 20px;
+            background: var(--primary-pink);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* ================= RESOURCES ================= */
+        .resources {
+            padding: 5rem 10%;
+            text-align: center;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* ================= CONTACT ================= */
+        .contact-container {
+            padding: 5rem 10%;
+            background: white;
+        }
+
+        form {
+            display: grid;
+            gap: 1.2rem;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        input, textarea {
+            padding: 14px;
+            font-size: 1.05rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .submit-btn {
+            background: var(--secondary-blue);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* ================= POPUP ================= */
+        .popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .popup {
+            background:
+                linear-gradient(rgba(216,27,96,0.9), rgba(216,27,96,0.9)),
+                url('https://images.unsplash.com/photo-1580281657527-47f249e8f6b5?auto=format&fit=crop&w=800&q=80')
+                center/cover no-repeat;
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            animation: popIn 0.6s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">🎗️ SupportHope</div>
+    <div class="nav-links">
+        <a href="#resources">Resources</a>
+        <a href="#tips">Wellness</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <h1>Hope Begins Here</h1>
+    <p>A community dedicated to awareness, compassion, and the journey toward healing.</p>
+</header>
+
+<section class="quote-section">
+    <p id="quote-text">Fetching inspiration...</p>
+    <p id="quote-author"></p>
+</section>
+
+<section class="tip-container" id="tips">
+    <div class="tip-card">
+        <h3>Daily Spark of Wellness</h3><br>
+        <p id="tip-display"></p>
+        <button class="refresh-tip-btn" onclick="generateTip()">Get New Tip</button>
+    </div>
+</section>
+
+<section class="resources" id="resources">
+    <h2>Support Pillars</h2>
+    <div class="resource-grid">
+        <div class="card"><h3>💬 Community</h3><p>Peer groups and survivor stories.</p></div>
+        <div class="card"><h3>📚 Education</h3><p>Trusted medical guidance.</p></div>
+        <div class="card"><h3>🧘 Mental Health</h3><p>Mindfulness and counseling.</p></div>
+    </div>
+</section>
+
+<section class="contact-container" id="contact">
+    <h2 style="text-align:center;color:var(--primary-pink)">Reach Out</h2>
+    <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="4" placeholder="How can we help?" required></textarea>
+        <button class="submit-btn">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>🎗️ Strength & Hope Initiative - by Ishwarya S</p>
+</footer>
+
+<script>
+    async function getQuote() {
+        try {
+            const res = await fetch('https://api.quotable.io/random?tags=inspirational');
+            const data = await res.json();
+            document.getElementById('quote-text').innerText = `"${data.content}"`;
+            document.getElementById('quote-author').innerText = `— ${data.author}`;
+        } catch {
+            document.getElementById('quote-text').innerText =
+                '"Courage is not the absence of fear, but the triumph over it."';
+            document.getElementById('quote-author').innerText = '- Nelson Mandela';
+        }
+    }
+
+    const tips = [
+        "Take 5 deep breaths, exhaling longer than you inhale. 🌬️",
+        "Listen to your favorite song and let the music lift you. 🎵",
+        "Write down one small victory you had today. 🏆",
+        "Hydrate! Your body does a lot for you; give it some water. 💧",
+        "It's okay to say 'no' to things that drain your energy. 🛡️",
+        "Look out the window and find three beautiful things. 🌸"
+    ];
+
+    function generateTip() {
+        document.getElementById('tip-display').innerText =
+            tips[Math.floor(Math.random() * tips.length)];
+    }
+
+    getQuote();
+    generateTip();
+</script>
+
+</body>
+</html>
